@@ -1,8 +1,12 @@
 const fs = require("fs");
 const generatePage = require("./src/page-template.js");
 const inquirer = require("inquirer");
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
-const promptUser = () => {
+const promptManager = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -21,11 +25,36 @@ const promptUser = () => {
             type: 'input',
             name: 'id',
             message: "What is the manager's ID number?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the manager's email?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the manager's email?"
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: "What is the manager's office phone number?"
         }
 
-    ]);
+    ])
+    .then(managerData => {
+        const manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.officeNumber);
+        console.log(manager);
+
+
+    });
 };
-const addEmployees = contactData => {
+//const addEngineer = () => {}
+
+//const addIntern = () => {}
+
+/* const addEmployees = contactData => {
     if (!contactData.employees) {
         contactData.employees = [];
     }
@@ -68,7 +97,7 @@ const addEmployees = contactData => {
     });
 };
 
-promptUser()
+promptManager()
 .then(addEmployees)
 .then(contactData => {
     console.log(contactData);
@@ -79,3 +108,5 @@ promptUser()
         //console.log('Page created! Checkout the dist/ directory to find your Contact info page!');
     //});
 });
+*/
+promptManager();
