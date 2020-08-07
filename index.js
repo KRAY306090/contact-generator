@@ -5,6 +5,7 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const employeeArr = [];
 
 const promptManager = () => {
     return inquirer.prompt([
@@ -45,7 +46,9 @@ const promptManager = () => {
     ])
     .then(managerData => {
         const manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.officeNumber);
-        console.log(manager);
+        //console.log(manager);
+        employeeArr.push(manager);
+        //console.log(employeeArr);
         if (managerData.employeeChoice === 'Engineer') {
             addEngineer();
         }
@@ -94,7 +97,8 @@ const addEngineer = () => {
     ])
     .then(engineerData => {
         const engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
-        console.log(engineer);
+        //console.log(engineer);
+        employeeArr.push(engineer);
 
         if (engineerData.employeeChoice === 'Engineer') {
             addEngineer();
@@ -104,7 +108,7 @@ const addEngineer = () => {
         }
         else 
         {
-            return;
+            console.log(employeeArr);
         }
     });
     
@@ -150,7 +154,8 @@ const addIntern = () => {
     ])
     .then(internData => {
         const intern = new Intern(internData.name, internData.id, internData.email, internData.school);
-        console.log(intern);
+        //console.log(intern);
+        employeeArr.push(intern);
 
         if (internData.employeeChoice === 'Engineer') {
             addEngineer();
@@ -160,55 +165,14 @@ const addIntern = () => {
         }
         else 
         {
-            return;
+            //use this to initialize the generate page function?
+            console.log(employeeArr);
         }
     });
     
 }
-
-/* const addEmployees = contactData => {
-    if (!contactData.employees) {
-        contactData.employees = [];
-    }
-    console.log(`
-        =================
-        Add a New Employee
-        =================
-    `);
-    return inquirer.prompt([
-        {
-            type: 'input',
-            name: 'name',
-            message: "What is the Employee's name?",
-            validate: nameInput => {
-                if (nameInput) {
-                  return true;
-                } else {
-                  console.log('Please enter the Employee name!');
-                  return false;
-                }
-              }
-
-        },
-        {
-            type: 'confirm',
-            name: 'confirmAddEmployee',
-            message: 'Would you like to add another Employee?',
-            default: false
-
-        }
-    ])
-    .then(employeeData => {
-        contactData.employees.push(employeeData);
-        if(employeeData.confirmAddEmployee) {
-            return addEmployee(contactData);
-        }
-        else {
-            return contactData;
-        }
-    });
-};
-
+        
+/*
 promptManager()
 .then(addEmployees)
 .then(contactData => {
