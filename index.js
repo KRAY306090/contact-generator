@@ -110,7 +110,61 @@ const addEngineer = () => {
     
 }
 
-//const addIntern = () => {}
+const addIntern = () => {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is the Intern's name?",
+            validate: nameInput => {
+                if (nameInput) {
+                  return true;
+                } else {
+                  console.log('Please enter the name!');
+                  return false;
+                }
+              }
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "What is the Intern's ID number?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the Intern's email?"
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: "What is the name of the Intern's school?"
+        },
+        {
+            type: 'list',
+            name: 'employeeChoice',
+            message: 'What type of employee would you like to add next?',
+            choices: ['Engineer', 'Intern', "I'm done"]
+        }
+
+    ])
+    .then(internData => {
+        const intern = new Intern(internData.name, internData.id, internData.email, internData.school);
+        console.log(intern);
+
+        if (internData.employeeChoice === 'Engineer') {
+            addEngineer();
+        }
+        else if (internData.employeeChoice === 'Intern') {
+            addIntern();
+        }
+        else 
+        {
+            return;
+        }
+    });
+    
+}
 
 /* const addEmployees = contactData => {
     if (!contactData.employees) {
