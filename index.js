@@ -33,24 +33,82 @@ const promptManager = () => {
         },
         {
             type: 'input',
-            name: 'email',
-            message: "What is the manager's email?"
-        },
-        {
-            type: 'input',
             name: 'officeNumber',
             message: "What is the manager's office phone number?"
+        },
+        {
+            type: 'list',
+            name: 'employeeChoice',
+            message: 'What type of employee would you like to add next?',
+            choices: ['Engineer', 'Intern']
         }
-
     ])
     .then(managerData => {
         const manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.officeNumber);
         console.log(manager);
-
-
+        if (managerData.employeeChoice === 'Engineer') {
+            addEngineer();
+        }
+        else {
+            addIntern();
+        }
     });
 };
-//const addEngineer = () => {}
+const addEngineer = () => {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is the Engineer's name?",
+            validate: nameInput => {
+                if (nameInput) {
+                  return true;
+                } else {
+                  console.log('Please enter the name!');
+                  return false;
+                }
+              }
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "What is the Engineer's ID number?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the Engineer's email?"
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Enter the github username for the Engineer.'
+        },
+        {
+            type: 'list',
+            name: 'employeeChoice',
+            message: 'What type of employee would you like to add next?',
+            choices: ['Engineer', 'Intern', "I'm done"]
+        }
+
+    ])
+    .then(engineerData => {
+        const engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
+        console.log(engineer);
+
+        if (engineerData.employeeChoice === 'Engineer') {
+            addEngineer();
+        }
+        else if (engineerData.employeeChoice === 'Intern') {
+            addIntern();
+        }
+        else 
+        {
+            return;
+        }
+    });
+    
+}
 
 //const addIntern = () => {}
 
