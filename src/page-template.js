@@ -1,42 +1,36 @@
 const generateManager = function (manager) {
     return`
     <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">${manager.getName()}</h5>
-    <p class="card-text">${manager.getId()}</p>
-    <p class="card-text">${manager.officeNumber}</p>
+    <h5 class="card-title">${manager.getName()}, ${manager.getRole()}</h5>
+    <p class="card-text">ID: ${manager.getId()}</p>
+    <p class="card-text">Office Number: ${manager.officeNumber}</p>
     <a href="#" class="btn btn-primary">${manager.getEmail()}</a>
   </div>
-</div>
-    `
+</div>`
 }
 const generateEngineer = function (engineer) {
     return`
     <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">${engineer.getName()}, ${engineer.getRole()}</h5>
-    <p class="card-text">${engineer.getId()}</p>
-    <p class="card-text">${engineer.getGithub()}</p>
+    <p class="card-text">ID: ${engineer.getId()}</p>
+    <a class="card-text" href="https://github.com/${engineer.getGithub()}">GitHub: ${engineer.getGithub()}</a>
     <a href="#" class="btn btn-primary">${engineer.getEmail()}</a>
   </div>
-</div>
-    `
+</div>`
 }
 
 const generateIntern = function (intern) {
     return`
     <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">${intern.getName()}</h5>
-    <p class="card-text">${intern.getId()}</p>
-    <p class="card-text">${intern.getSchool()}</p>
+    <h5 class="card-title">${intern.getName()}, ${intern.getRole()}</h5>
+    <p class="card-text">ID: ${intern.getId()}</p>
+    <p class="card-text">School: ${intern.getSchool()}</p>
     <a href="#" class="btn btn-primary">${intern.getEmail()}</a>
   </div>
-</div>
-    `
+</div>`
 }
 
 const generateTeam = function (team) {
@@ -76,7 +70,7 @@ module.exports = teamData => {
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">My Team</span>
       </nav>
-      <main>
+      <main class="container" >
             ${generateTeam(teamData)}
       </main>
 </body>
