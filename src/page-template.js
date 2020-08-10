@@ -5,7 +5,7 @@ const generateManager = function (manager) {
     <h5 class="card-title">${manager.getName()}, ${manager.getRole()}</h5>
     <p class="card-text">ID: ${manager.getId()}</p>
     <p class="card-text">Office Number: ${manager.officeNumber}</p>
-    <a href="#" class="btn btn-primary">${manager.getEmail()}</a>
+    <a href="mailto:${manager.getEmail()}" class="btn btn-primary">${manager.getEmail()}</a>
   </div>
 </div>`
 }
@@ -16,7 +16,7 @@ const generateEngineer = function (engineer) {
     <h5 class="card-title">${engineer.getName()}, ${engineer.getRole()}</h5>
     <p class="card-text">ID: ${engineer.getId()}</p>
     <a class="card-text" href="https://github.com/${engineer.getGithub()}">GitHub: ${engineer.getGithub()}</a>
-    <a href="#" class="btn btn-primary">${engineer.getEmail()}</a>
+    <a href="mailto:${engineer.getEmail()}" class="btn btn-primary">${engineer.getEmail()}</a>
   </div>
 </div>`
 }
@@ -28,7 +28,7 @@ const generateIntern = function (intern) {
     <h5 class="card-title">${intern.getName()}, ${intern.getRole()}</h5>
     <p class="card-text">ID: ${intern.getId()}</p>
     <p class="card-text">School: ${intern.getSchool()}</p>
-    <a href="#" class="btn btn-primary">${intern.getEmail()}</a>
+    <a href="mailto:${intern.getEmail()}" class="btn btn-primary">${intern.getEmail()}</a>
   </div>
 </div>`
 }
@@ -70,8 +70,10 @@ module.exports = teamData => {
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">My Team</span>
       </nav>
-      <main class="container" >
+      <main class="container mt-5" >
+      <div class="row">
             ${generateTeam(teamData)}
+        </div>
       </main>
 </body>
 </html>`
