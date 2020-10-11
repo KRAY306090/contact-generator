@@ -15,3 +15,6 @@ This application requires the installation of the Node Package Manager. Prior to
 ## Usage
 To start the application run `node index.js`
 A walkthrough video of the application's functionality can be found here https://drive.google.com/file/d/1DQCqmbOBhMK6RYoIsELhL_Em9eqA1xBc/view
+
+## License
+MIT
